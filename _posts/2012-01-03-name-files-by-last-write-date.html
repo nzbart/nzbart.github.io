@@ -1,0 +1,6 @@
+---
+layout: post
+title: Name files by last write date
+---
+
+<p>I have a Samsung HMX-H200BP/XSA camcorder, which I am really happy with. However, according to <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">exiftool</a>, it does not seem to stamp the record date and time into the movie metadata. Instead, it relies on the last write date.</p> <p>The PowerShell command below will bulk rename all the MP4 files in the current folder so that they are named by the date and time taken i.e. the last write date.</p> <pre class="brush:ps"><br />dir hdv_*.mp4 | % { ren $_.Name ($_.LastWriteTime.ToString('yyyy-MM-dd HH-mm') + '.mp4') }<br /></pre>

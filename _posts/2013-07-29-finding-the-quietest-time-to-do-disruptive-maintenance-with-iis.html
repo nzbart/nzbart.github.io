@@ -1,0 +1,6 @@
+---
+layout: post
+title: Finding the quietest time to do disruptive maintenance with IIS
+---
+
+Some changes to production environments may be much simpler if a little downtime is acceptable (such as migrating hosting providers). Using hard data to find that time to determine the impact on customers is possible using IIS logs and the LogParser tool.<br /><div><br /></div><div><ol><li>Get hold of the IIS logs from all production servers and copy them into a single folder e.g.&nbsp;</li><ul><li>Server1</li><ul><li>W3SVC1</li><ul><li>ex12345.log</li></ul></ul><li>Server2</li><ul><li>W3SVC1</li><ul><li>ex12345.log</li></ul></ul></ul><li>Download and install LogParser, if you don't have it.</li><li>Run the following PowerShell from within the log folder root: <pre class="brush:ps">&amp; 'C:\Program Files (x86)\Log Parser 2.2\LogParser.exe' -i:iisw3c -recurse:-1 "select to_localtime(to_timestamp(date, quantize(time, 3600))) as LocalTimeBlock, count(*) as Count into Logs.csv from *.log where date is not null and `"cs(User-Agent)`" not like '%pingdom%' group by LocalTimeBlock"</pre>This query converts all dates and times into one hour blocks int local time and excludes requests from Pingdom, which we use for uptime monitoring. </li><li>Load the generated Log.csv in Excel and create a scatter plot from the two columns.&nbsp;</li></ol></div>

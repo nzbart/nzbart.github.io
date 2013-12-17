@@ -1,0 +1,6 @@
+---
+layout: post
+title: Killing all processes that have a DLL loaded
+---
+
+To kill all the tasks or processes that have a DLL loaded or open, use <a href="http://technet.microsoft.com/en-us/library/bb491009.aspx">taskkill.exe</a>:<br /><br /><pre>PS C:\> taskkill.exe /im * /t /f /fi "modules eq [YOURMODULENAME.DLL]"<br />SUCCESS: The process with PID 7664 (child process of PID 2572) has been terminated.<br /></pre>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Serialise value to XML in one line of C#
+---
+
+This one-liner is useful in the immediate window of Visual Studio to serialise an object to XML:<br /><br /><pre class="brush:csharp">new XmlSerializer(OBJECT.GetType()).Serialize(new System.IO.StreamWriter(@"c:\temp\x.xml"), OBJECT);<br /></pre><br /><em>Note that this is not production ready because it does not dispose of objects that should be disposed!</em>

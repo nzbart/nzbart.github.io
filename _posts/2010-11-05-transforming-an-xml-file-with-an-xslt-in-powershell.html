@@ -1,0 +1,6 @@
+---
+layout: post
+title: Transforming an XML file with an XSLT in PowerShell
+---
+
+This code will transform an XML file with an XSLT file and save the resulting file to disk:<br /><br /><pre class="brush: ps;">$xslt = new-object system.xml.xsl.xslcompiledtransform<br />$xslt.load('transform.xslt')<br />$xslt.Transform('input.xml', 'output.xml')<br /></pre>

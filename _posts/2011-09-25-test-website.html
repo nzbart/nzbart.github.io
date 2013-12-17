@@ -1,0 +1,6 @@
+---
+layout: post
+title: Test-Website
+---
+
+The following function might be useful for checking whether a web page is up or down in PowerShell:<br /><br /><pre class="brush:ps">function Test-Website([string][parameter(mandatory=$true)]$Url, [string]$Content)<br />{<br />    $webRequest = [System.Net.WebRequest]::Create($Url) <br />    $webRequest.CookieContainer = New-Object System.Net.CookieContainer;<br />    <br />    try {<br />        $response = $webRequest.GetResponse() <br />    }<br />    catch {<br />        return $false<br />    }<br />    <br />    if($response.StatusCode -ne 200) {<br />        return $false<br />    }<br />    <br />    $responseStream = $response.GetResponseStream()<br />    $sr = New-Object IO.StreamReader($responseStream)<br />    $result = $sr.ReadToEnd()<br /><br />    return $result -match $Content<br />}<br /></pre>

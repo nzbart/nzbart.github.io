@@ -1,0 +1,6 @@
+---
+layout: post
+title: Overriding Internet Explorer Compatibility Mode for intranet sites
+---
+
+Many corporate environments (including my own) have the "Display intranet sites in Compatibility View" setting enabled. This means that, even if you use the new <code>&lt;doctype html></code> tag, your intranet site will render in Compatibility Mode. This means that Internet Explorer 8 will render your site in Internet Explorer 7 mode.<br /><br />I found a <a href="http://hsivonen.iki.fi/doctype/ie8-mode.pdf">fantastic summary of the decision tree that Internet Explorer uses when deciding how to render a page</a>. Using this information, I tried adding the following tag to each page:<br /><br /><pre class="brush:html">&lt;meta http-equiv="X-UA-Compatible" content="IE=Edge"/><br /></pre><br />This tag will override the Compatibility Mode settings and the browser will render in the most standards compliant way.<br /><br />The downside of this tag is that it is not standard HTML, and will fail HTML validation.

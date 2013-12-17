@@ -1,0 +1,6 @@
+---
+layout: post
+title: Slow builds of Windows Mobile applications
+---
+
+Every time I install a new machine with Visual Studio and write applications for Windows Mobile, I need to turn off the Platform Verification task to get reasonable build times, but I invariably forget how to do this.<br /><br />The file is <i>%windir%\Microsoft.NET\Framework\{<i>newest framework version</i>}\Microsoft.CompactFramework.Common.Targets</i>. Open this file for editing (as administrator), and add a 'false' condition to the PlatformVerificationTask.<br /><br />The line you edit should look like:<br /><i>Name="PlatformVerificationTask" Condition="false"></i>

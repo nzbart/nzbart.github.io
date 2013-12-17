@@ -1,0 +1,6 @@
+---
+layout: post
+title: Launching a PowerShell script in 64 bit mode on a 64 bit machine
+---
+
+If a 32-bit process launches PowerShell on a 64 bit machine, it will launch powershell.exe from the 32 bit system32 folder rather than the 64 bit one. Some scripts need to run in 64 bit mode, so the solution is to have the script relaunch itself in 64 bit mode if it detects that it has been run in 32 bit mode. This is one way to do it:<br /><pre class="brush:ps"><br />$powerShellExe = join-path $env:WINDIR SysNative\WindowsPowerShell\v1.0\powershell.exe<br />if(test-path ($powerShellExe)) {<br />    if([System.Runtime.InterOpServices.Marshal]::SizeOf([System.IntPtr]) -eq 4) {<br />        write-host "Re-launching script in native 64 bit mode..."<br />        & $powerShellExe $MyInvocation.MyCommand.Definition $PSBoundParameters.Values<br />        $host.SetShouldExit($LASTEXITCODE) <br />        exit<br />    }<br />}<br /></pre>

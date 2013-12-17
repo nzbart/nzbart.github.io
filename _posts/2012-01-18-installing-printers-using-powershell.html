@@ -1,0 +1,6 @@
+---
+layout: post
+title: Installing printers using PowerShell
+---
+
+<p>Our developer team has a wiki page that describes very clearly how to use the Windows 7 UI to install network printers into developer machines. The document is well written, with all steps accompanied by screenshots. However, it is tricky and boring to follow, so I thought there must be a simpler way to add printers using PowerShell - and it turns out there is.</p> <pre class="brush:ps"><br />$net = New-Object -Com WScript.Network<br />$net.AddWindowsPrinterConnection('\\server\printer')<br /></pre>

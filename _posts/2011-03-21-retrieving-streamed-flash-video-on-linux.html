@@ -1,0 +1,6 @@
+---
+layout: post
+title: Retrieving streamed Flash video on Linux
+---
+
+<a href="http://www.commandlinefu.com/commands/view/7991/recover-tmp-flash-videos-deleted-immediately-by-the-browser-plugin">This blog post on commandlinefu.com</a> shows a fantastic one-liner to retrieve a streaming Flash file as it is being played. It seems that Flash writes to a file, but then deletes that file even as it is being used.<br /><br />Reproduced here in case the other blog disappears one day:<br /><pre>for h in `find /proc/*/fd -ilname "/tmp/Flash*" 2>/dev/null`; do ln -s "$h" `readlink "$h" | cut -d' ' -f1`; done<br /></pre>

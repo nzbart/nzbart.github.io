@@ -1,0 +1,6 @@
+---
+layout: post
+title: Listing all PowerShell type accelerators
+---
+
+Type accelerators are shortcuts (similar to aliases) for .NET type names.<br /><br />For example:<br /><br /><i>[int]3.0</i><br />and<br /><i>[system.int32]3.0</i><br /><br />Are equivalent because there is a type accelerator that maps <i>int</i> to <i>System.Int32</i>. They can be very useful when dealing with longer type names such as <i>System.Text.RegularExpressions.Regex</i> ([<i>regex</i>]).<br /><br />The way to list all the currently defined type accelerators is:<br /><br /><i>([type]::gettype("System.Management.Automation.TypeAccelerators"))::get | sort key</i><br /><br /><i>TypeAccelerators</i> also has an <i>Add</i> function that can be used to define new type accelerators.

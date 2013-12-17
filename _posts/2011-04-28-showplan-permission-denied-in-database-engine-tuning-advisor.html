@@ -1,0 +1,6 @@
+---
+layout: post
+title: ! '"SHOWPLAN permission denied" in Database Engine Tuning Advisor'
+---
+
+I recently ran into an issue while trying to tune a database used by an ASP.NET website. The error displayed in the Database Engine Tuning Advisor was:<br /><br /><blockquote>[Microsoft][SQL Server Native Client 10.0][SQL Server]SHOWPLAN permission denied in database '<i>database</i>'.</blockquote><br />After a lot of digging, I managed to track down an <a href="http://www.ureader.com/msg/11621241.aspx">obscure post</a> that mentioned DTA runs statements as the user who originally executed the statement - in this case the site's application pool user. This user is locked down and does not have SHOWPLAN permission, even though I, as administrator do have permission.<br /><br />The solution in the development database (where security is not a major concern) was to grant SHOWPLAN permission to the application pool user:<br /><br /><pre class="brush:sql">grant showplan to [domain\user]<br /></pre>

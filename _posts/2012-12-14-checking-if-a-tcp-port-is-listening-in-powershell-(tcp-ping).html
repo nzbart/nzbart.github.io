@@ -1,0 +1,6 @@
+---
+layout: post
+title: Checking if a TCP port is listening in PowerShell (TCP Ping)
+---
+
+In older versions of Windows, the telnet command could be used to test a TCP connection to another machine. However, this is not installed by default on newer versions of the O/S.  The solution is to use a .NET class from PowerShell:  <pre class="brush:ps"><br />New-Object System.Net.Sockets.TcpClient machinename, 1337<br /></pre>

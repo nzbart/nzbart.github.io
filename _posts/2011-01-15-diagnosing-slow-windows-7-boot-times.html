@@ -1,0 +1,6 @@
+---
+layout: post
+title: Diagnosing slow Windows 7 boot times
+---
+
+To see what your machine is doing during boot up, use the tool xperfboot.exe from the <a href="http://msdn.microsoft.com/en-us/windows/bb980924">Windows SDK</a> or as a download from the <a href="http://msdn.microsoft.com/en-us/performance/default">Windows Performance Analysis Developer Centre</a>.<br /><br />Run this command:<br /><br /><pre>xbootmgr –trace rebootCycle -resultPath %temp%\boot</pre><br />This will reboot your machine twice.<br /><br />xperfview can then be used to view the output:<br /><br /><pre>xperfview %temp%\boot\boot_BASE+CSWITCH_1.etl</pre>

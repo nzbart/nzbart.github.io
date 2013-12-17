@@ -1,0 +1,6 @@
+---
+layout: post
+title: Problem PXE booting Trinity Rescue Kit (TRK) 3.4
+---
+
+After reconfiguring my PXE boot system to boot the Trinity rescue kit, partly by following the <a href="http://trinityhome.org/Home/index.php?wpid=33&front_id=12">official guide</a>, I ran into the following error:<br /><br /><pre class="brush:plain">Looks like we 're booting from network, mounting xxxx:/yyy on /trk<br />/trk/trk3/trkramfs: Permission denied<br />Something's wrong in startup, dropping to a shell, stop booting<br /></pre><br />The solution is to modify the permissions on the file trkramfs:<br /><br /><pre class="brush:plain">chmod +rx trkramfs<br /></pre><br />I am not sure why this problem would occur in the latest build.<br /><br />I was using the Trinity Rescue Kit 3.4 build 367.

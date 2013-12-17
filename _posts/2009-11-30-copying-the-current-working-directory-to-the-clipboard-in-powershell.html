@@ -1,0 +1,6 @@
+---
+layout: post
+title: Copying the current working directory to the clipboard in PowerShell
+---
+
+To copy the current working directory to the clipboard, use the following command:<br /><br /><i>(get-location).ToString() | out-clipboard</i><br />Or:<br /><i>(get-location).ToString() | clip</i><br /><br />The first method requires the <a href="http://www.codeplex.com/Pscx">PowerShell Community Extensions</a>. The second requires clip.exe, which is present on Vista (and newer) OSs, or older OSs with some resource kits installed.<br /><br />Another useful trick is to start Windows Explorer in the current folder:<br /><br /><i>explorer .</i>

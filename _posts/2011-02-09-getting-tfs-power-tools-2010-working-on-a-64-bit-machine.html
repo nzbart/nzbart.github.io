@@ -1,0 +1,6 @@
+---
+layout: post
+title: Getting TFS Power Tools 2010 working on a 64 bit machine
+---
+
+If you install the <a href="http://visualstudiogallery.msdn.microsoft.com/c255a1e4-04ba-4f68-8f4e-cd473d6b971f/">Team Foundation Server Power Tools</a> on x64 Windows, the TFS cmdlets will only be accessible in x86 PowerShell, not x64. This is because the installer is x86 and installs the required registry entries to the x86 registry. We can copy those entries by running the following command as an administrator from the 64 bit console:  <br /><br /><pre class="brush:ps">copy HKLM:\SOFTWARE\Wow6432Node\Microsoft\PowerShell\1\PowerShellSnapIns\Microsoft.TeamFoundation.PowerShell HKLM:\SOFTWARE\Microsoft\PowerShell\1\PowerShellSnapIns\Microsoft.TeamFoundation.PowerShell -r<br /></pre><br />Then, to load the TFS Power Tools snapin (unfortunately, <i>not</i> a module), run:<br /><br /><pre class="brush:ps">Add-PSSnapin Microsoft.TeamFoundation.PowerShell<br /></pre>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Configuring PowerShell remoting
+---
+
+Below are the steps I use to configure PowerShell remoting:  <h3>Domain Controlled</h3><h4>Client</h4>Enable-WSManCredSSP Client –DelegateComputer <FQDN of the server> To use:  Double-hop safe: New-PSSession <FQDN of the Server> -Authentication CredSSP -Credential <User> | Enter-PSSession Standard: New-PSSession <Server> | Enter-PSSession  <h4>Server</h4>Enable-PSRemoting Enable-WSManCredSSP Server    <h3>Workgroup</h3><h4>Client</h4>TRUST!!!   <h4>Server</h4>Enable-PSRemoting

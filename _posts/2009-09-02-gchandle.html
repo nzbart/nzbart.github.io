@@ -1,0 +1,6 @@
+---
+layout: post
+title: GCHandle
+---
+
+I seem to struggle to find this little class whenever I need to, and usually only find it after exhausting all the methods on <span style="font-style:italic;">Marshal</span> before eventually finding it using Google.<br /><br />GCHandle is used to get the address (IntPtr) for an object and can pin the object so it won't be moved while native code is using it.<br /><br /><a href="http://blogs.msdn.com/clyon/archive/2005/03/18/398795.aspx">This blog</a> describes why GCHandle doesn't implement IDisposable.<br /><br />Trap for young players: if your object is a struct or other value type, it will be boxed and <i>that copy</i> will be pinned, not your original structure. This boxing happens when you pass your instance to the GCHandle constructor and it is cast to the object base class.

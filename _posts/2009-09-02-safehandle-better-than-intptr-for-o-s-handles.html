@@ -1,0 +1,6 @@
+---
+layout: post
+title: SafeHandle better than IntPtr for O/S HANDLEs
+---
+
+During my recent travels through P/Invoke, I found <i>SafeHandle</i>, which is preferable to IntPtr for handle types.<br /><br />See: <a href="http://blogs.msdn.com/bclteam/archive/2005/03/16/396900.aspx">this blog entry</a>.<br /><br />Unfortunately, as with many good things, it is not available in the Compact Framework. No HandleRef either.<br /><br />Now I just need to find out whether I should be using IntPtr or UIntPtr...

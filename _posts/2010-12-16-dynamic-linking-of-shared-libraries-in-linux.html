@@ -1,0 +1,6 @@
+---
+layout: post
+title: Dynamic linking of shared libraries in Linux
+---
+
+To list the classes, functions, and methods exported by a shared library (.so), use this command:<br /><br /><pre>nm -C --defined-only -g lib<i>library</i>.so<br /></pre><br />To view a list of shared libraries required by a program:<br /><br /><pre>ldd <i>program</i><br /></pre><br />Tested on Ubuntu 10.10. Note that the equivalent functionality in Windows would be provided by dumpbin.exe.

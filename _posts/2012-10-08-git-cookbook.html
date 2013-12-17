@@ -1,0 +1,6 @@
+---
+layout: post
+title: Git Cookbook
+---
+
+This page lists some useful commands that I use with Git:  <br /><ul><li>Show all branches that contain a commit. Useful to see which branches a topic branch has been merged into.</li><ul><li>git branch --all --contains <i>commit</i></li></ul><li>Show which branches have not been merged into the current or specified branch.</li><ul><li>git branch --all --no-merge [<i>branch]</i></li></ul><li>Pretty-print history tree</li><ul><li>git log --oneline --graph --decorate --all</li></ul><li>List all changes that will be sent with the next push</li><ul><li>git log --branches --not --remotes</li></ul><li>Update <a href="http://notes.envato.com/developers/rebasing-merge-commits-in-git/">from remote</a></li><ul><li>git fetch</li><li>git rebase -p</li></ul><li>Get name of remote tracking branch for the current branch</li><ul><li>git branch -vv | ? { $_ -match '^\*' } | % { $_ -match '\[([^:]+)' | Out-Null; $Matches[1] }</li></ul><li>Get the most recently modified topic branch</li><ul><li>&nbsp;git for-each-ref --sort=-committerdate --format='%(refname)' refs/remotes/origin/topic | select -first 1</li></ul></ul>

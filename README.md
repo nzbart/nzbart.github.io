@@ -1,2 +1,4 @@
-nzbart.github.io
-================
+blog
+====
+
+Jekyll based blog

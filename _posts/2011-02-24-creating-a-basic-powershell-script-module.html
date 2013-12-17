@@ -1,0 +1,6 @@
+---
+layout: post
+title: Creating a basic PowerShell script module
+---
+
+It is convenient to put frequently used functions into a PowerShell module. To do this, simply go to (after creating it, if need be) a folder called <i>Documents\WindowsPowerShell\Modules</i> (for the paths you can use, run this command: <code>echo $env:PSModulePath</code>).<br /><br />Create a folder by the name of the module you want to create e.g. <i>Utilities</i>. Within that folder, create a .psm1 file by the same name as that folder e.g. <i>Utilities.psm1</i>. Any function you create in the .psm1 file will be imported when you import the module.<br /><br /><b>Additional information:</b><br /><ul><li><i>gmo -ListAvailable</i> should list your new module, along with others installed in your system.</li><li><i>ipmo Utilities</i> will load your module (if it is called <i>Utilities</i>).</li><li><i>rmo Utilities</i>&nbsp;will unload your module (if it is called&nbsp;<i>Utilities</i>).</li><li><i>gcm -Module Utilities</i>&nbsp;will list all the functions exported by your module once it is loaded (if it is called&nbsp;<i>Utilities</i>).</li><li><a href="http://technet.microsoft.com/en-us/library/dd819504.aspx"><i>Export-ModuleMember</i></a> allows you to choose which functions you export from your module.</li></ul>

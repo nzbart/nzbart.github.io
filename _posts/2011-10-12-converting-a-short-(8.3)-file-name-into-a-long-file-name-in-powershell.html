@@ -1,0 +1,6 @@
+---
+layout: post
+title: Converting a short (8.3) file name into a long file name in PowerShell
+---
+
+It took me a while to find, but converting a short DOS style (8.3) Windows file name into a long file name in PowerShell is easy. For example, my system temp folder was configured with my user folder as a short name, so I used the following to retrieve the long name:<br /><br /><pre class="brush:ps">(get-item $env:temp).FullName<br /></pre>

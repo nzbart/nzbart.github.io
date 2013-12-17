@@ -1,0 +1,6 @@
+---
+layout: post
+title: Using the File Checksum Integrity Verifier (fciv.exe) to ensure file integrity
+---
+
+<p>The <a href="http://support.microsoft.com/kb/841290">File Checksum Integrity Verifier (fciv.exe)</a> can be used to calculate and verify that file contents have not changed.</p><br /><h3>Calculating Hashes</h3><p>The following PowerShell command line will calculate the hashes for the current folder and all subfolders, saving the results into ..\Hashes.xml.</p><pre>fciv -add (resolve-path .) -bp (resolve-path .) -r -xml ..\Hashes.xml -sha1<br /></pre><br /><h3>Verifying Hashes</h3><p>The purpose of calculating a hash is to compare it at a later date to see whether the file has changed or not.</p><br /><p>Use the following command to list all the hashes in the databases.</p><pre>fciv.exe -list -xml ..\Hashes.xml -sha1<br /></pre><br /><p>This command will verify the file content.</p><pre>fciv.exe -v . -r -xml ..\Hashes.xml -sha1<br /></pre>

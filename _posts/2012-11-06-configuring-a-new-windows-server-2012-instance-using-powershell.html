@@ -1,0 +1,6 @@
+---
+layout: post
+title: Configuring a new Windows Server 2012 instance using PowerShell
+---
+
+<br /><ol><li>Join the domain (prompt for user name and password of domain administrator):<pre class="brush:ps">Add-Computer -DomainName {Domain Name}</pre></li><li>Add a domain user as an administrator:<pre class="brush:ps">net localgroup administrators {Domain Name}\{User Name} /add</pre></li><li>Name the computer:<pre class="brush:ps">Rename-Computer {New Name}</pre></li><li>Enable PowerShell remoting (note: no double hops):<pre class="brush:ps">Enable-PSRemoting</pre></li><li>Restart the computer:<pre class="brush:ps">Restart-Computer</pre></li></ol>

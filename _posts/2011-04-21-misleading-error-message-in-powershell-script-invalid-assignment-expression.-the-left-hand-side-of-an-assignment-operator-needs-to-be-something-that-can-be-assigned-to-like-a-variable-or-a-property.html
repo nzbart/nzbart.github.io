@@ -1,0 +1,8 @@
+---
+layout: post
+title: ! 'Misleading error message in PowerShell script: "Invalid assignment expression.
+  The left hand side of an assignment operator needs to be something that can be assigned
+  to like a variable or a property"'
+---
+
+I recently ran into the following error message while modifying a PowerShell script:<br /><br /><blockquote>Invalid assignment expression. The left hand side of an assignment operator needs to be something that can be assigned to like a variable or a property</blockquote><br />The cause of the error was that I had added a line of code in front of my param declaration:<br /><br /><pre class="brush:ps">Set-StrictMode -Version 2<br /><br />param(<br />    [string][parameter(mandatory=$true )] $WebsitePhysicalPath,<br /></pre>

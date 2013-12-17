@@ -1,0 +1,6 @@
+---
+layout: post
+title: Direct Booking does not successfully book a resource in Outlook 2010
+---
+
+The <a href="http://support.microsoft.com/kb/982774">Microsoft support article entitled <i>Direct Booking does not successfully book a resource in Outlook 2010</i></a> discusses how to solve a problem booking resources in Outlook 2010.  The following PowerShell one-liner will fix the problem:  <pre class="brush:ps"><br />New-ItemProperty "HKCU:\Software\Microsoft\Office\14.0\Outlook\Options\Calendar" EnableDirectBooking -Value 1 -PropertyType DWORD<br /></pre>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Problems with non-deterministic cleanup via garbage collection
+---
+
+Garbage collection is great for managing memory, but when the reality of managing other types of resources is introduced, things don't go quite as smoothly. This is just some notes to myself around problems with non-deterministic garbage collection.<br /><br /><ul><li>http://blogs.microsoft.co.il/blogs/sasha/archive/2008/07/28/finalizer-vs-application-a-race-condition-from-hell.aspx</li> <li>Finaliser thread blocked.</li> <li>What if a class asks for another class that implements interface - should that class be disposed, and does that mean that every class that uses interfaces should be disposed?</li> <li>When using an IOC container such as Unity for dependency injection, should the consumer dispose the instance or not?</li></ul>

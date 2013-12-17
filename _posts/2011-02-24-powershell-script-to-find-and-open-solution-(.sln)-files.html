@@ -1,0 +1,6 @@
+---
+layout: post
+title: PowerShell script to find and open solution (.sln) files
+---
+
+Finding and opening Visual Studio solutions in multiple projects and branches can be painful at times. This simple script may help:<br /><br /><pre class="brush:ps">param([int]$OpenId)<br /><br />$it = 0<br />$sln = dir -Filter *.sln -Recurse | <br />    sort FullName |<br />    % { New-Object psobject -Property @{ Id = ++$it; Name = $_.Name; FullName = resolve-path -relative $_.FullName } }<br /><br />if($OpenId)<br />{<br />    if($OpenId -lt 0 -or $OpenId -gt $sln.length)<br />    {<br />        throw "Invalid Id."<br />    }<br /><br />    &amp; $sln[$OpenId - 1].FullName<br />}<br />else<br />{<br />    $sln<br />}<br /></pre>

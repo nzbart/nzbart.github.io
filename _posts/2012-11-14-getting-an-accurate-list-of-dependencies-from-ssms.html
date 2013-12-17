@@ -1,0 +1,6 @@
+---
+layout: post
+title: Getting an accurate list of dependencies from SSMS
+---
+
+The dependency dialog in SQL Server Management Studio does not appear to be particularly reliable, not returning some dependencies.  The solution is to use the <i>sys.dm_sql_referenced_entities</i> table function:  <pre class="brush:sql"><br />select * from sys.dm_sql_referenced_entities (&lt;ENTITY>, 'object')<br /></pre> 

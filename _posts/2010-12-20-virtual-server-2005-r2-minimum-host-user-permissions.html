@@ -1,0 +1,6 @@
+---
+layout: post
+title: Virtual Server 2005 R2 minimum host user permissions
+---
+
+<a href="http://technet.microsoft.com/en-us/library/cc708357(WS.10).aspx">This page on MSDN</a> lists the following permissions required for a user to run a virtual machine:<br /><br /><ul><li>On the .vmc file: Read Data, Write Data and Execute File</li><li>On the .vhd file: Read Data, Read Attributes, Read Extended Attributes, and Write Data</li><li>On the .vnc file if a virtual machine is connected to a virtual network: Execute File, Read Data, Read Attributes and Read Permissions</li><li>On the folder containing the .vmc file, for a virtual machine to have the ability to save state: List Folder and Write/Create File</li></ul><br />Unfortunately, this list is not complete. They also need:<br /><ul><li>On the .vmc file: Read Permissions</li></ul><br />The error you may see when you attempt to start a VM configured according to the MSDN page is:<br /><br /><p style="color:red;text-align:center">The following error occurred:<br />The virtual machine could not be started. The virtual machine could not be started. Access was denied.</p><br />Using these permissions, you can create a local user who belongs to no groups and only has the permissions provided above - security through least privilege.

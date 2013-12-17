@@ -1,0 +1,7 @@
+---
+layout: post
+title: Listing all columns in a SQL Server database that have empty strings in them
+  using PowerShell
+---
+
+I needed to find all the columns in a database that have empty strings in them so that we could track down the source of this (these?) data. This proved to be fairly straightforward using PowerShell, but is still something that I will jot down here to save time in case I need to do the same again in the future.<br /><br />To run this one-liner, open SQL Server Management Studio and right click on the database you want to run it on, then choose <i>Start PowerShell</i>.<br /><br />Modify the following command and run it in the PowerShell window you just opened. Note that it may be possible to write a simpler command than this, but this one is simple and it works.<br /><br /><pre class="brush:ps">dir | % { dir ($_.displayname + '\columns') } | ? { $_.datatype -match 'varchar' } | select parent, datatype, name | % { invoke-sqlcmd -suppressprovidercontextwarning ("select '" + $_.parent + "', '" + $_.name + "', count(*) from " + $_.parent + " where `"" + $_.name + "`" = ''")  } | ? { $_[2] -ne 0 }<br /></pre>

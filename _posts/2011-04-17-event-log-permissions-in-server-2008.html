@@ -1,0 +1,6 @@
+---
+layout: post
+title: Event log permissions in Server 2008
+---
+
+Configuring the permissions for an event log in Server 2003 and earlier required processing the SDDL at this registry entry:<br /><br /><pre>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Eventlog\Application\CustomSD<br /></pre><br />To get the SDDL in Server 2008, use the following PowerShell:<br /><pre class="brush:ps">$currentSddl = ([xml](wevtutil.exe gl $logName /f:xml)).channel.channelAccess<br /></pre><br />And to write it back:<br /><pre class="brush:ps">wevtutil sl $logName /ca:$newSddl<br /></pre>

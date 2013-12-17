@@ -1,0 +1,6 @@
+---
+layout: post
+title: Requiring administrative access in Visual Studio 2010 C++ projects
+---
+
+In previous versions of Visual Studio, making any changes to the application manifest file for a C++ application required you to code one up manually, removing the advantages of the built-in manifest generation tool. However, in Visual Studio 2010, common tasks such as setting the UAC execution level are now baked into the project settings.<br /><br />Below is a screenshot of how to set the execution level (<i>requestedExecutionLevel</i>) or UI protection (<i>uiAccess</i>) settings in the manifest using the project settings.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-zsBzfXnNTzg/TwQDedqKQ0I/AAAAAAAAAJ8/mfhydzrAyYo/s1600/ManifestUser.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-zsBzfXnNTzg/TwQDedqKQ0I/AAAAAAAAAJ8/mfhydzrAyYo/s1600/ManifestUser.png"/></a></div><br />

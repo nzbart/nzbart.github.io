@@ -1,0 +1,6 @@
+---
+layout: post
+title: Extracting files in PowerShell without third party components
+---
+
+Sometimes it is not acceptable to install or use third party components such as 7-zip or the PowerShell Community Extensions onto machines (particularly because they are not digitally signed). This script will extract files using the shell API:<br /><br /><pre class="brush:ps">param(<br />[parameter(mandatory=$true)][string]$SourceFile,<br />[parameter(mandatory=$true)][string]$DestinationFolder)<br /><br />if(-not (test-path $DestinationFolder))<br />{<br />    md $DestinationFolder | Out-Null<br />}<br /><br />$absoluteSource = resolve-path $SourceFile | select -ExpandProperty path<br />$absoluteDestination = resolve-path $DestinationFolder | select -ExpandProperty path<br /><br />$app = new-object -ComObject Shell.Application<br />$archive = $app.Namespace($absoluteSource).Items()<br />$dest = $app.Namespace($absoluteDestination)<br />$dest.CopyHere($archive)</pre>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Sound for Ubuntu 10.04 on the Compaq Presario CQ56
+---
+
+After installing Ubuntu 10.04, and then every time the kernel updated, I had no sound. The operating system seems to detect the card, and I can set the volume, but no sound is played through the speaker.<br /><br />I hope the next point release gets a fix for this, but in the meantime, this page has the solution for next time I need to update the kernel:<br /><br /><a href="https://wiki.ubuntu.com/Audio/InstallingLinuxAlsaDriverModules">InstallingLinuxAlsaDriverModules</a>.<br /><br />The technique I use is to execute the following three lines at the command line, and then reboot:<br /><br /><pre class="brush:bash">sudo add-apt-repository ppa:ubuntu-audio-dev/ppa<br />sudo apt-get update<br />sudo apt-get install linux-alsa-driver-modules-$(uname -r)<br /></pre><br />Don't forget to reboot!<br /><br /><br />Note that you may hit the following error, which means that the package has not been created for the newer version of the kernel. The solution is usually to wait a few weeks for the package to be created and try again.<br /><br /><pre class="brush:text"><br />Couldn't find package linux-alsa-driver-modules-2.6.32-37-generic<br /></pre><div><br /></div>

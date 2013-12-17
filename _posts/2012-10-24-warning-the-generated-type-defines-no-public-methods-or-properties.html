@@ -1,0 +1,6 @@
+---
+layout: post
+title: ! 'WARNING: The generated type defines no public methods or properties'
+---
+
+I received the following warning while using the Add-Type CmdLet in PowerShell:  <pre>WARNING: The generated type defines no public methods or properties.</pre> Since I was aware that this was the case, I suppressed the warning using the following parameter to Add-Type: <pre class="brush:ps">Add-Type -WarningAction SilentlyContinue ...</pre>

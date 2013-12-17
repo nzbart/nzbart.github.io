@@ -1,0 +1,6 @@
+---
+layout: post
+title: Get status of all Git repositories using PowerShell
+---
+
+The following PowerShell one-liner will get the status of all Git repositories:  <pre class="brush:ps"><br />dir -r -i .git -fo | % { pushd $_.fullname; cd ..; write-host -fore yellow (get-location).Path; git status; popd }<br /></pre> Note that this will not work for bare repositories.

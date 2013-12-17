@@ -1,0 +1,6 @@
+---
+layout: post
+title: Using WiX (under Votive) without installing onto your TFS build server
+---
+
+I always prefer to install the minimum amount of software on my build server and instead commit tools into the source repository alongside the source code. This, along with other benefits, means that the tools are versioned alongside the source code and different projects can have different versions of the tools.<br /><br />To do this with WiX for use on a TFS build server, do the following:<br /><br /><ol><li>Install WiX on a developer machine.</li><li>Copy the files from "C:\Program Files (x86)\MSBuild\Microsoft\WiX\v3.x" to a folder in your source tree.</li><li>Copy the files from "C:\Program Files (x86)\Windows Installer XML v3.5\bin" to the same folder.</li><li>Edit your wixproj file as a text file.</li><li>Add the following lines just under the opening Project tag:<br /><pre class="brush:xml">  &lt;PropertyGroup><br />    &lt;SolutionRoot Condition="'$(SolutionRoot)' == ''">$(SolutionDir)&lt;/SolutionRoot><br />    &lt;WixToolPath>$(SolutionRoot)\ThirdParty\WiX\&lt;/WixToolPath><br />    &lt;WixTargetsPath>$(WixToolPath)Wix.targets&lt;/WixTargetsPath><br />    &lt;WixTasksPath>$(WixToolPath)wixtasks.dll&lt;/WixTasksPath><br />  &lt;/PropertyGroup><br /></pre></li><li>Check all these files in and build.</li></ol>

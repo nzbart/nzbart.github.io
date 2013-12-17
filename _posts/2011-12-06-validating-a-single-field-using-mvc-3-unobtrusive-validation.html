@@ -1,0 +1,6 @@
+---
+layout: post
+title: Validating a single field using MVC 3 unobtrusive validation
+---
+
+I recently ran into a problem using the jQuery autocomplete control with ASP.NET MVC3 unobtrusive validation. Everything worked correctly except for the scenario where the user clicked an option in the drop-down using the mouse. When this happened, the validation event was not fired against the item the user clicked because no keyboard action had taken place. The solution was to fire the validation event in the <i>select</i> event of the autocomplete control. <br /><br />To validate the single field using MVC 3 programatically, I used the following JavaScript: <br /><pre class="brush:js">$("form").validate().element($(elementToValidate)); <br /></pre>

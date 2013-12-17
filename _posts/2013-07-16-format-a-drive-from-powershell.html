@@ -1,0 +1,6 @@
+---
+layout: post
+title: Format a drive from PowerShell
+---
+
+After adding a new drive to a Windows Server 2012 Core machine, you will need to format it and assign a drive letter. This is how to do it.<br /><br /> <pre class="brush:ps"><br />$disk = Get-Disk | ? PartitionStyle -eq Raw<br />$disk | Initialize-Disk<br />$part = New-Partition -DiskNumber $disk.Number -UseMaximumSize<br />Initialize-Volume -Partition $part -FileSystem ReFS<br />Add-PartitionAccessPath -DiskNumber $disk.Number -PartitionNumber $part.PartitionNumber -AccessPath D:\</pre>

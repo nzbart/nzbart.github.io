@@ -1,0 +1,6 @@
+---
+layout: post
+title: Correctly Executing a PowerShell script from MSBuild
+---
+
+It took me a while to find out how to execute a PowerShell script from within an MSBuild script <i>while propagating errors to MSBUILD</i>. I tried several approaches, including the usual -File argument, but this is what I came up with in the end:  <pre class="brush:xml"><br />&lt;Exec Command="powershell -Command &amp;quot;&amp;amp;{ .\Deploy.ps1 scriptArg1 scriptArg2 }&amp;quot;" /><br /></pre>

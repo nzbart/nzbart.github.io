@@ -1,0 +1,6 @@
+---
+layout: post
+title: Preventing method inlining in c#
+---
+
+I sometimes want to prevent inlining of methods byt the JIT in C#. Usually this is because I need the call stack to be preserved, for example when using <i>Assembly.GetCallingAssembly</i>.<br /><br />This is the attribute:<br /><i>[MethodImpl(MethodImplOptions.NoInlining)]</i>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Setting up Unity in a new project
+---
+
+Using the Common Service Locator and Unity is fairly simple with Nuget. This post records the steps in case I need them again.<br /><br /><br /><ol><li>Add the CommonServiceLocator and Unity packages to the project using Nuget.</li><li>Add the following initialisation code (for example in Application_Start):<br /><pre class="brush:csharp">UnityContainer container = new UnityContainer();<br />            <br />//configure container<br />...<br /><br />var unityServiceLocator = new UnityServiceLocator(container);<br />ServiceLocator.SetLocatorProvider(() =&gt; unityServiceLocator);<br /></pre></li><li>Use the IServiceLocator and ServiceLocator interface and class for DI and service location, respectively.<br /></ol>

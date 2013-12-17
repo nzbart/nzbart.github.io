@@ -1,0 +1,6 @@
+---
+layout: post
+title: Flattening an AD group hierarchy
+---
+
+Sometimes it can be difficult to find all the members of an active directory group when there are multiple child or sub groups.<br /><br />To flatten the hierarchy, use this command:<br /><pre>dsquery group -limit 0 | select-string <i>group_to_find</i> | dsget group -members -expand</pre>

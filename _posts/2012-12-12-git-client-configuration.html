@@ -1,0 +1,6 @@
+---
+layout: post
+title: Git client configuration
+---
+
+This is the Git configuration I use for my local repositories.  <pre class="brush:text"><br />[core]<br /> autocrlf = false<br />[push]<br /> default = simple<br />[rerere]<br /> enabled = true<br />[diff]<br /> tool = p4merge<br />[difftool "p4merge"]<br /> cmd = p4merge \"$LOCAL\" \"$REMOTE\"<br />[merge]<br /> defaultToUpstream = true<br /> tool = p4merge<br />[mergetool "p4merge"]<br /> cmd = p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"<br /> keepTemporaries = false<br /> trustExitCode = false<br /> keepBackup = false<br />[gc]<br /> auto = 0<br /></pre>

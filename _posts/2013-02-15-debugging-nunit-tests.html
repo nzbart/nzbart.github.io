@@ -1,0 +1,6 @@
+---
+layout: post
+title: Debugging NUnit tests
+---
+
+<p>I generally use NCrunch or ReSharper to run my NUnit tests, but it seems each test runner has its own quirks. Sometimes, integration tests only fail on the build machine because they run in the command line runner. Debugging these is a little trickier.</p> <p>The solution I found that works well is to launch the NUnit GUI and run the tests from there, attaching to the correct process by running the following command in the Package Manager Console (i.e. PowerShell in VS):</p> <pre class="brush:ps"><br />($dte.Debugger.LocalProcesses | ? { $_.Name.EndsWith("nunit-agent.exe") }).Attach()<br /></pre>

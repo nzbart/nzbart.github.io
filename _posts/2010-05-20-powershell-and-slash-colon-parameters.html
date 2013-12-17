@@ -1,0 +1,6 @@
+---
+layout: post
+title: PowerShell and slash-colon parameters
+---
+
+PowerShell plays around with the quotes in parameters when part of the parameter is quoted like this:<br /><br /><b>/param:"quoted path"</b><br /><br />This gets passed to the application as:<br /><b>"/param:quoted path"</b><br /><br />The only workaround I have found works like this:<br /><pre class="brush: ps">$cmd = "& `"application`" /p:`"path`"; `$result = `$?"<br />Invoke-expression $cmd<br />if(!$result)<br />{<br />    throw "Application failed."<br />}<br /></pre>

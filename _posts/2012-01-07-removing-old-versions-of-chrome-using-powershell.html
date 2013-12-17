@@ -1,0 +1,6 @@
+---
+layout: post
+title: Removing old versions of Chrome using PowerShell
+---
+
+<p>Google Chrome leaves older versions of itself on disk, which can cause useful vulnerability scanners such as the fantastic <a href="http://secunia.com/vulnerability_scanning/personal/">Secunia PSI</a> to report Chrome as vulnerable although the older version is not in use.</p> <p>To automatically remove older versions from the current user, run the following PowerShell one-liner.</p> <pre class="brush:ps"><br />dir ~\AppData\Local\Google\Chrome\Application | ? { $_ -match '\d+\.\d+\.\d+\.\d+' } | % { @{ File=$_; Version=(New-Object System.Version $_.Name) } } | sort -Descending Version | select -Skip 1 | % { del -fo -r $_.File.PSPath }<br /></pre>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Getting the current page URI in classic ASP
+---
+
+This JScript gets the current URI in a classic ASP server page:<br /><br /><pre class="brush:js">function getSv(name) { return Request.ServerVariables(name) }<br />var currentUri = ((getSv("HTTPS") == "off") ? "http" : "https") + "://" + getSv("SERVER_NAME") + getSv("SCRIPT_NAME")<br /></pre>

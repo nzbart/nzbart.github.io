@@ -1,0 +1,6 @@
+---
+layout: post
+title: Copying video from the JVC GR-D850AA using firewire on Linux
+---
+
+It seems that our JVC GR-D850A works on Vista, but not on Windows 7, so I thought this might be something that Linux could solve for me.<br /><br />I started up <a href="http://www.kinodv.org/">Kino</a> on my Linux Mint Debian Edition partition, and was able to fast forward and rewind the tape, but I only saw a black screen when playing. CLI application dvgrab to the rescue.<br /><br />To copy the video and split into timestamped files, I ran this command:<br /><br /><pre>dvgrab -buffers 1000 -rewind -autosplit -format avi -timestamp video<br /></pre><br />I needed the buffering because I was streaming over a network. <br /><br />Note that dv1 format seems to crash mplayer. Another useful command is this, which streams the video directly into mplayer:<br /><br /><pre>dvgrab - | mplayer -<br /></pre><br />To control the tape, you can use the dvcont command:<br /><pre>dvcont stop<br />dvcont rewind<br />dvcont status<br /></pre><br />Using mencoder and find, the following command will convert a folder of AVI files into XVID format, saving them into a subdirectory called <i>small</i>:<br /><br /><pre>find . -name "*.avi" -type f -exec mencoder {} -ovc xvid -oac mp3lame -xvidencopts fixed_quant=3 -o small/{} \;<br /></pre>

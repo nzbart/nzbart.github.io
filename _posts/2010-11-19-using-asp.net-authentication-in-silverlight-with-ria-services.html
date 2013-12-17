@@ -1,0 +1,6 @@
+---
+layout: post
+title: Using ASP.NET authentication in Silverlight with RIA Services
+---
+
+The first step is to set up the database you wish to authenticate against (ignore this if you are using Windows authentication, which wouldn't apply for most websites).<br /><br />If you are not using the default DB, add this to the configuration section in your web.config:<br /><br /><pre class="brush:xml">&lt;connectionStrings&gt;<br />    &lt;clear/&gt;<br />    &lt;add name=&quot;LocalSqlServer&quot; connectionString=&quot;data source=(local); Integrated Security=SSPI;Initial Catalog=ASPNET;&quot; providerName=&quot;System.Data.SqlClient&quot; /&gt;<br />&lt;/connectionStrings&gt;<br /></pre><br />(Thanks to <a href="http://centricle.com/tools/html-entities/"centricle.com</a> for the html encoding utility.)<br /><br />To add the default ASP.NET authentication tables to the database, use <i>aspnet_regsql</i>.<br /><br /><a href="http://www.asp.net/LEARN/moving-to-asp.net-2.0/module-08.aspx">asp.net</a> has a good introduction to setting up ASP.NET authentication.<br /><br /><a href="http://blog.davidyack.com/journal/2009/7/29/ria-services-staying-logged-in.html">This blog entry</a> shows how to modify the silverlight business templates to use ASP.NET forms authentication with "stay logged in" feature.

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Trinity Rescue Kit (TRK) 3.4 does not resolve DNS out of the box
+---
+
+If you boot the Trinity Rescue Kit (TRK) 3.4 build 367 and try to run a tool that requires the internet, such as a virus scan, you may get an error like this:<br /><br /><pre>Neither DNS nor proxy parameters for wget found so no internet connection, cannot fetch AV engine</pre><br />Attempting to ping google.com from a shell returns this error:<br /><pre>ping: unknown host google.com</pre><br />The solution seems to be to launch dhcpcd from the command line:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_6Fzo7P_ZJpU/TSgT32gyBFI/AAAAAAAAAHo/30DGymJYGY4/s1600/Untitled.png" imageanchor="1" style=""><img style="max-width:100%" border="0" src="http://4.bp.blogspot.com/_6Fzo7P_ZJpU/TSgT32gyBFI/AAAAAAAAAHo/30DGymJYGY4/s1600/Untitled.png" /></a></div>

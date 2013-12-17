@@ -1,0 +1,6 @@
+---
+layout: post
+title: Problem debugging stored procedures / T-SQL on (local) databases
+---
+
+If you run into the following error while trying to debug T-SQL in SQL Server Management Studio, the problem is that the DNS name (local) cannot be resolved:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-R-uHUMBEQ_I/ToprvN6nSnI/AAAAAAAAAJM/BsSXPuvskb8/s1600/error.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="139" width="400" alt="Unable to start T-SQL Debugging. Could not connect to computer '(local)'. The requested name is valid, but no data of the requested type was found." src="http://4.bp.blogspot.com/-R-uHUMBEQ_I/ToprvN6nSnI/AAAAAAAAAJM/BsSXPuvskb8/s1600/error.png" /></a></div><br />The solution is to connect to localhost rather than (local).

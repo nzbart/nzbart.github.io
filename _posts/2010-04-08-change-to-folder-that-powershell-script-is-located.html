@@ -1,0 +1,6 @@
+---
+layout: post
+title: Change to folder that PowerShell script is located
+---
+
+To change to the folder or directory that the executing PowerShell script is located:<br /><br /><pre>pushd (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)</pre><br />Alternatively:<br /><br /><pre>$scriptFolder = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent</pre><br />Note that $PSScriptRoot is preferable for PowerShell 3.0.

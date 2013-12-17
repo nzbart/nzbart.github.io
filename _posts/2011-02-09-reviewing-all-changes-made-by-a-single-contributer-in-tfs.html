@@ -1,0 +1,6 @@
+---
+layout: post
+title: Reviewing all changes made by a single contributer in TFS
+---
+
+Get-TfsItemHistory . -r -inc | ? { $_.committer -match 'si550296' } | select-object -ExpandProperty Changes | select -ExpandProperty item | select -ExpandProperty serveritem | sort | Get-Unique | % { tf history $_ }

@@ -1,0 +1,6 @@
+---
+layout: post
+title: PowerShell script to get a list of all assemblies required by a .NET executable
+---
+
+<pre class="brush:ps">param ([string][parameter(mandatory=$true)]$path)<br /><br />function GetReferencedAssemblies([reflection.assembly][parameter(mandatory=$true)]$top)<br />{<br />    $script:found += $top.Location<br /><br />    $ref = $top.getreferencedassemblies() <br />    $ref | % {<br />        $name = $_.name<br />        $loaded = $null<br />        try<br />        {<br />            $loaded = [reflection.assembly]::load($_) <br />        }<br />        catch<br />        {<br />            $loaded = [reflection.assembly]::loadfrom((resolve-path ($name + '.dll')))<br />        }<br /><br />        if($script:found -notcontains $loaded.Location -and -not $loaded.GlobalAssemblyCache)<br />        {<br />            GetReferencedAssemblies $loaded<br />        }<br />    }<br />}<br /><br />$path = resolve-path $path -ErrorAction stop<br />pushd (split-path $path)<br />try<br />{<br />    $found = @()<br />    $top = [reflection.assembly]::loadfrom($path)<br />    GetReferencedAssemblies $top<br />    $found<br />}<br />finally<br />{<br />    popd<br />}<br /></pre>

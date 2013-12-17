@@ -1,0 +1,6 @@
+---
+layout: post
+title: System freezing after being idle for some time
+---
+
+Some freezes, some BSOD; minidumps showed no pattern.<br /><br />I recently began having serious problems with my machine locking up<br /><br />Determine when the problem started:<br />C:\temp\ShutdownEvent.ps1 | ? { $_.message -match 'Dirty.*' }<br /><br />It is usually a kernel mode problem, so list all drivers and their file creation date:<br />dir $env:windir\system32\drivers | select name, creationtime | sort creationtime -desc | less<br /><br />Have a look at which applications were installed recently to find what installed the driver:<br />gwmi win32_product | sort installdate -desc | select installdate,name<br /><br />Uninstall!<br /><br />You may need to use autoruns (link) to disable the driver.<br />Reboot <br />Confirm that your driver is not loaded by running:<br />driverquery.exe /v /fo csv | convertfrom-csv | ? { $_.state -ne 'Stopped' } | sort Path | select 'Display Name',Path,State

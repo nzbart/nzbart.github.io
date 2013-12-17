@@ -1,0 +1,6 @@
+---
+layout: post
+title: Installing Jekyll on Windows
+---
+
+Installing Jekyll on Windows is trivially easy if you already have <a href="http://chocolatey.org/">Chocolatey</a> on your machine.  Run the following PowerShell one-liner and you’ll be set up in no time!   <pre class="brush:ps">cup python; cup ruby1.9; cup ruby.devkit.ruby193; gem install jekyll; gem install wdm; gem uninstall pygments.rb; gem install pygments.rb --version "=0.5.0"</pre>  Now you just need to learn Jekyll by starting here: <a href="http://jekyllrb.com/docs/usage/">http://jekyllrb.com/docs/usage/</a>.  Bear in mind that there are <a href="https://github.com/mojombo/jekyll/pull/1387">some issues</a> with Jekyll on Windows because it is not an officially supported platform.

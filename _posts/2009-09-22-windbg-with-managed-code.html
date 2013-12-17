@@ -1,0 +1,6 @@
+---
+layout: post
+title: WinDbg with managed code
+---
+
+Loading the correct version of SOS is done by: .loadby sos mscorwks.<br /><br /><b>Useful commands in <a href="http://msdn.microsoft.com/en-us/library/bb190764.aspx">SOS</a>:</b><br />List CLR threads: !threads<br />Dump managed stack of current thread: !CLRStack<br />Dump managed stack of current thread with parameters and locals: !CLRStack -a<br />Dump managed and native stack of current thread: !DumpStack<br />Break on first chance CLR exceptions: sxe clr<br />Get IL of method: !ip2md <i>address</i>, then !u <i>result</i><br />Display last exception info: !pe (use Event Filters to run the command whenever a CLR exception is thrown)<br /><br />Another useful tool is <a href="http://www.stevestechspot.com/SOSEXUpdatedV11Available.aspx#ac51f1a46-0016-4f24-9ca7-61125105c6e1">SOSEX</a>, which supports deadlock detection, etc.<br /><br />I was unable to get WinDbg to be the postmortem debugger for all crashes - installing it only seems to work for native applications.<br /><br /><b>Native commands:</b><br />List O/S threads: ~<br />Change thread by: ~<i>{threadnumber}</i>s or ~~[<i>{threadid}</i>]s<br />Handle tracing: !htrace<br /><br />This <a href="http://geekswithblogs.net/.NETonMyMind/archive/2006/03/14/72262.aspx">cheat sheet</a> is also useful.

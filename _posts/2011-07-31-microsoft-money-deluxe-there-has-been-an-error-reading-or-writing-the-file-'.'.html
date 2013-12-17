@@ -1,0 +1,7 @@
+---
+layout: post
+title: ! 'Microsoft Money Deluxe: "There has been an error reading or writing the
+  file ''.''"'
+---
+
+I ran into the following error using Microsoft Money Deluxe (version 14.0.120.1105) while trying to view the Account Transactions report:<br /><br /><pre>There has been an error reading or writing the file '.'<br /></pre><br />A quick Google search turned up <a href="http://support.microsoft.com/kb/281865">KB281865</a> on Microsoft's site, but that only helped by confirming that this is a known issue. I was seemingly unable to get into the configuration dialog box to effect the fix, so not sure what to do. <br /><br />The fix that worked for me was to view the report and wait for the error dialog saying <i>There has been an error reading or writing the file '.'</i><br />to appear. Then, I positioned my mouse over the <i>Customize...</i> button and hit enter to dismiss the error dialog. Immediately after closing the dialog, I clicked the <i>Customize...</i> button, and the report customisation dialog popped up. After resetting the report using the <i>Reset</i> button, I was good to go!<br /><br />Note that the Money 2005 Deluxe comes out of the box as version 14.0.120.805, so upgrading to version&nbsp;14.0.120.1105 requires the installation of a QFE (aka SP1). This used to be downloaded automatically by money, but now must be downloaded directly from Microsoft <a href="http://www.microsoft.com/download/en/search.aspx?q=money%202005%20qfe">here</a>.

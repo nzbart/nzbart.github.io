@@ -1,0 +1,6 @@
+---
+layout: post
+title: Complex work item queries in TFS
+---
+
+I recently wanted to create a work item query that showed all my work items that are either not closed or I had modified recently. This query provides a useful list of work items for associating with a check-in.<br /><br />I wanted the query to show:<br /><code>AssignedTo = @Me AND (State <> Closed OR (State = Closed AND ChangedDate > @Today - 7))</code><br /><br />To do this, I needed to use multiple levels of the <i>Group Clauses</i> feature, which is available by selecting more than one clause and right clicking on one of the selected clauses.<br /><br />The result is below:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_6Fzo7P_ZJpU/TNBpDBnirDI/AAAAAAAAAGw/JDE1qefMWIA/s1600/Grouped+TFS+query.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img style="max-width:100%" border="0"  src="http://3.bp.blogspot.com/_6Fzo7P_ZJpU/TNBpDBnirDI/AAAAAAAAAGw/JDE1qefMWIA/s1600/Grouped+TFS+query.png" /></a></div>

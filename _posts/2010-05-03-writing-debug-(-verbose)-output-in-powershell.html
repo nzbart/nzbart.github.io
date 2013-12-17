@@ -1,0 +1,6 @@
+---
+layout: post
+title: Writing Debug (-Verbose) Output in PowerShell
+---
+
+To write output in PowerShell that is only displayed when the -Verbose switch is given, use the following attribute in your script:<br />[CmdletBinding]<br /><br />Then use write-verbose.<br /><br />This makes the function an <a href="http://huddledmasses.org/a-guide-to-advanced-functions/">Advanced Function</a>.

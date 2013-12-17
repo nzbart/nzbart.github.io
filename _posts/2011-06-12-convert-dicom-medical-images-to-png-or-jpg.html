@@ -1,0 +1,6 @@
+---
+layout: post
+title: Convert DICOM medical images to png or jpg
+---
+
+We received our baby scans on CD in DICOM format which can be viewed in the viewer on disk. I wanted to convert these to a more popular format - either png (lossless) or jpg (lossy).<br /><br />I used <a href="http://www.imagemagick.org">ImageMagick</a> through PowerShell to convert all the images and save them into a separate folder:<br /><br /><pre class="brush:ps">mogrify -format png *; md Converted; move *.png Converted<br /></pre>

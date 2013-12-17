@@ -1,0 +1,6 @@
+---
+layout: post
+title: ''
+---
+
+First clear your existing rules, if any (Home > Conditional Formatting > Clear Rules)<br /><br />Then select the area you want to have the conditional formatting and not which row the active cell is in.  Suppose it is in row 2...<br />Home > Conditional Formatting > New Rule > Use formula to determine which cells to format > Format values where this formula is true: =$B2="No" > Format > set the colour you desire.<br />The 2 in the formula should be the row number containing the active cell.<br />Note there is no $ before the 2, which means the row number adjusts for the other rows<br /><br />http://answers.microsoft.com/en-us/office/forum/office_2007-excel/use-conditional-formatting-to-color-an-entire-row/d90398d5-0b80-4877-bd0a-54a24f3667c0

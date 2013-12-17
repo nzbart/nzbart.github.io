@@ -1,0 +1,6 @@
+---
+layout: post
+title: Configuring a Git server
+---
+
+To publish an HTTP server, I use <a href="https://github.com/otac0n/WebGitNet">WebGitNet</a> and the following system configuration:  <pre><br />receive.denynonfastforwards=true<br />gc.auto=0<br />core.logallrefupdates=true<br /></pre> <h4>receive.denynonfastforwards=true</h4>Prevents people from accidentally pushing (using -force) a non-fast-forward update. This happened to me when I wanted to push a non-fast-forward update, but did not specify the single branch i.e. I used <code>git push -f</code>, which by default pushes <I>all</I> branches using the force flag.  <h4>gc.auto=0</h4>There can be a lot of useful information in the 'garbage' of a git repository. My policy is to <a href="http://www.cs.cmu.edu/~davide/howto/git_lose.html">never delete that garbage</a>.  <h4>core.logallrefupdates=true</h4>The reflog is useful, but unfortunately it is not kept for remote bare repositories. This re-enables the reflog.

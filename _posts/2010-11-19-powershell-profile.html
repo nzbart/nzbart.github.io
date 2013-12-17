@@ -1,0 +1,6 @@
+---
+layout: post
+title: PowerShell Profile
+---
+
+Some handy functions I put into my PowerShell profile.<br /><br /><pre class="brush:ps">#Change background colour of window if PowerShell is launched "As Administrator" under UAC<br />& {<br />    $wid=[System.Security.Principal.WindowsIdentity]::GetCurrent()<br />    $prp=new-object System.Security.Principal.WindowsPrincipal($wid)<br />    $adm=[System.Security.Principal.WindowsBuiltInRole]::Administrator<br />    $IsAdmin=$prp.IsInRole($adm)<br />    if ($IsAdmin)<br />    {<br />        (get-host).UI.RawUI.Backgroundcolor="DarkRed"<br />        clear-host<br />    }<br />}<br /><br />#Create an alias 'ed' to launch Visual Studio as your file editor<br />function Edit-WithDevenv([string]$Path)<br />{<br />    & devenv /edit $Path <br />}<br />new-alias ed edit-withdevenv<br /></pre>

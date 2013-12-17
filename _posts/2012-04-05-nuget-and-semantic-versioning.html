@@ -1,0 +1,6 @@
+---
+layout: post
+title: NuGet and Semantic Versioning
+---
+
+<p><a href="http://docs.nuget.org/docs/release-notes/nuget-1.6">NuGet version 1.6 introduced support for Semantic Versioning</a>, however I have since discovered that NuGet only supports <a href="http://semver.org/spec/v1.0.0.html">v1.0.0 of the SemVer specification</a>. Unfortunately, this is much more limiting than the <a href="http://semver.org/">latest version</a>, which supports more and better scenarios such as continuous integration builds.</p><p>Semantic versions in NuGet must match the following regular expression:</p><br /><pre>(?<version>\d+(\.\d+){2})(?<release>-[a-z][0-9a-z-]*)?</release></version></pre><br /><p>This means a version number with three components (e.g. 1.0.0) optionally followed by a pre-release version number. The pre-release version number must start with a dash (-) and a letter between a-z, and can then be any number of digits, letters and dashes (-). The regular expression is case insensitive.</p><p>For example, <br /><ul><li>0.1.0</li><li>0.1.0-alpha</li><li>0.1.0-Alpha</li><li>0.1.0-a-2 </li></ul></p>

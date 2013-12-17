@@ -1,0 +1,6 @@
+---
+layout: post
+title: Continuous integration
+---
+
+This is what I like to run for continuous integration builds:<br /><ol><li>Set version numbers in all assemblies.</li><li>The release build.</li><li>Code analysis (build breaker).</li><li>Unit tests (build breaker).</li><li>Integration tests (build stability).</li><li>FitNesse tests (build stability).</li></ol><br />Outputs I like to collect are:<br /><ul><li>Build outputs, including PDBs, ideally in a symbol server.</li><li>Code coverage percentage and details.</li><li>Test results.</li></ul>

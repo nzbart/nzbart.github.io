@@ -1,0 +1,6 @@
+---
+layout: post
+title: ''
+---
+
+After recently importing a Subversion repository into Git, along with the associated .gitignore file, I noticed that git status was performing poorly. The solution was to split the monolithic .gitignore file in the root folder into multiple .gitignore files spread throughout the repository.<br /><br />I wrote the following PowerShell script to do so:  <pre class="brush:ps"><br />$content = type .gitignore | % { $_.Trim() } | ? { $_.StartsWith('/') } | % { $_.SubString(1) }<br />$content | % {<br />    $folder = split-path -Parent $_    <br />    if($folder.length -gt 0) {<br />        if(-not (test-path $folder)) {<br />            md $folder | Out-Null<br />        }<br />        $pattern = split-path -Leaf $_<br />        $newPattern = '/' + $pattern<br />        $ignoreFile = "$folder\.gitignore"<br />        $exists = $false<br />        if((test-path $ignoreFile ) -and (type $ignore) -notcontains $newPattern) {<br />            $exists = $true<br />        }<br />        if(!$exists) {<br />            Add-Content -Force -Path $ignoreFile $newPattern<br />        }<br />    }<br />}<br /></pre>

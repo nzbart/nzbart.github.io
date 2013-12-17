@@ -1,0 +1,6 @@
+---
+layout: post
+title: Executing a PowerShell script from TFS 2010 workflow
+---
+
+<ol><li>Add an InvokeProcess activity to the workflow.</li><li>Set the DisplayName property to something useful for logging and debugging.</li><li>Set the FileName property to "powershell.exe"</li><li>Set the Arguments like this: <br /><pre class="brush: vb;">"-file """ + SourcesDirectory + "\Scripts\SetAssemblyVersions.ps1"" " + MajorVersionNumber.ToString() + " " + MinorVersionNumber.ToString() + " " + BuildDetail.SourceGetVersion.Substring(1) + " " + BuildDetail.BuildNumber.Substring(BuildDetail.BuildNumber.LastIndexOf(".") + 1)</pre></li><li>Give names to the standard output and error output streams.</li><li>Add a WriteBuildMessage activity under the <i>Handle Standard Output</i> field and set its Message property to the standard output stream defined above.</li><li>Add a WriteBuildError activity under the <i>Handle Error Output</i> field and set its Message property to the error output stream defined above.</li></ol>

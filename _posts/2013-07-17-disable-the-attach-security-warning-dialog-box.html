@@ -1,0 +1,6 @@
+---
+layout: post
+title: Disable the "Attach Security Warning" dialog box
+---
+
+When remote debugging with Visual Studio, you may get an "Attach Security Warning" dialog for every process you want to attach to. There is no obvious way to stop this from popping up, and it can be quite frustrating when remote debugging several application pools. Microsoft's rationale for the security warning is <a href="http://msdn.microsoft.com/en-us/library/ms241736(v=vs.110).aspx">here</a>. <br><br>For those who want to silence this dialog forever, run the following PowerShell one-liner:  <pre class="brush:ps"><br />taskkill /IM devenv.exe; while(get-process -ea 0 devenv) { Write-Host "Waiting for Visual Studio to shut down..."; Start-Sleep -sec 1 }; ls HKCU:\Software\Microsoft\VisualStudio | % { $_.PSPath + "\Debugger" } | % { sp -ea 0 $_ DisableAttachSecurityWarning -Type DWORD -Value 1 }<br /></pre>

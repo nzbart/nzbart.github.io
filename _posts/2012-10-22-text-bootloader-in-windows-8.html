@@ -1,0 +1,6 @@
+---
+layout: post
+title: Text bootloader in Windows 8
+---
+
+Windows 8 installs a new, quite nice looking, graphical bootloader. Unfortunately, this&nbsp;bling comes with a fairly serious drawback&nbsp;-&nbsp;Windows 8&nbsp;needs to boot before the bootloader is displayed on the screen, which can take 20 seconds or so, and then if you have the audacity to want to boot into another operating system, the machine&nbsp;will be rebooted, forcing you to endure another BIOS POST sequence.<br /><br />The workaround is to enable the text based bootloader using bcdedit (note that the backticks (`) are required in PowerShell to escape the braces):<br /><pre class="brush:ps"><br />bcdedit /set `{current`} bootmenupolicy legacy<br /></pre>To switch back to the graphical bootloader, run the following command: <pre class="brush:ps"><br />bcdedit /set `{current`} bootmenupolicy standard<br /></pre> You'll need to run these PowerShell commands as an administrator.

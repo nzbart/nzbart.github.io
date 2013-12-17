@@ -1,0 +1,6 @@
+---
+layout: post
+title: Contract first WCF tips
+---
+
+Generate types from xsd using WSCF Blue with options set to correct capitalisation.<br /><br />On the interface:<br />Apply the ServiceContractAttribute with the service namespace.<br />Apply the XmlSerializerFormat(SupportsFaults = true) attribute.<br /><br />On the interface's operation:<br />Apply FaultContractAttribute.<br />Apply OperationContractAttribute.<br /><br />On the service class:<br />Apply any behaviour attributes, such as for error handling.<br />Apply the ServiceBehaviourAttribute, and set ConcurrencyMode = ConcurrencyMode.Multiple, IncludeExceptionDetailInFaults = false.<br /><br />The operation should take a type such as:<br /><br /><pre class="brush:csharp">[MessageContract(IsWrapped = false)]<br />public class Input<br />{<br />    [MessageHeader(Name = "headerData")]<br />    public Header Header { get; set; }<br /><br />    [MessageBodyMember(Name = "inputData")]<br />    public Body Body { get; set; }<br />}<br /></pre><br />The response must be similar:<br /><br /><pre class="brush:csharp">[MessageContract(IsWrapped = false)]<br />public class Response<br />{<br />    [MessageHeader(Name = "headerData")]<br />    public Header Header { get; set; }<br /><br />    [MessageBodyMember(Name = "responseData")]<br />    public Body Body { get; set; }<br />}<br /></pre>

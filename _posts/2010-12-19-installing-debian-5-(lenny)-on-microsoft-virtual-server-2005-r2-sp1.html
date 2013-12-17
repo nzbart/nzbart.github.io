@@ -1,0 +1,6 @@
+---
+layout: post
+title: Installing Debian 5 (Lenny) on Microsoft Virtual Server 2005 R2 SP1
+---
+
+If you run into a kernel panic installing Debian 5 (Lenny) on Microsoft Virtual Server 2005 R2 SP1 (32 bit host and client), try this:<br /><ol><li>Launch the Debian CD.</li><li>Press TAB on the Install option to edit the command line.</li><li>Change <pre>vga=normal</pre>to <pre>vga=791</pre></li><li>Add the following: <pre>noapic nolapic noreplace-paravirt</pre></li><li>Install as normal.</li></ol>

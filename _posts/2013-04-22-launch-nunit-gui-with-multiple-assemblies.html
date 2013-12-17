@@ -1,0 +1,6 @@
+---
+layout: post
+title: Launch NUnit GUI with multiple assemblies
+---
+
+<p>The NUnit GUI does not support loading multiple assemblies from the command line, so this PowerShell function creates an NUnit project file that can be specified as a command line argument. Just provide a file name for the new project file (must end in .nunit or NUnit will barf) and an array of assembly files to load. </p> <p>As a bonus, this project file will load your assemblies in multiple process mode, which means that any associated assembly configuration files will be correctly loaded.</p> <script src="https://gist.github.com/anonymous/5433593.js"></script> 

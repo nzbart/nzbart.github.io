@@ -1,0 +1,6 @@
+---
+layout: post
+title: Logging to Windows Event Log using JScript
+---
+
+This handy function allows you to log to the Windows Event Log using JScript, for example from a classic ASP web page:<br /><br /><pre class="brush:js">function Log(message) {<br />    var shell = new ActiveXObject("WScript.Shell")<br />    shell.Exec('eventcreate /id 1 /l [LOG] /SO [SOURCE] /T ERROR /D "' + String(message).replace('"', '""') + '"')<br />}<br /></pre>

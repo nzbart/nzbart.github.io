@@ -1,0 +1,6 @@
+---
+layout: post
+title: Saving the output of a windows batch file (.cmd file) to a file
+---
+
+Sometimes it is useful to save the output of a Windows batch file to a file as well as display it to the screen. This is a possible solution:<br /><br /><pre class="brush:plain">@echo off<br />setlocal<br />set logfile=Log.log<br />if not "%1" == "/nolog" (<br />  (<br />    date /t & time /t<br />    call %0 /nolog<br />  ) >> %logfile% 2>&1<br />  type %logfile%<br />  endlocal<br />  exit /b<br />) <br /><br />... your batch file starts here...<br /></pre><br />It is much easier to achieve this in a PowerShell script by using the <a href="http://technet.microsoft.com/en-us/library/dd347721.aspx">Start-Transcript</a> cmdlet. <a href="http://technet.microsoft.com/en-us/library/dd347705.aspx">Tee-Object</a> may also be handy, because it can display the output onto the screen as well as writing to a file.

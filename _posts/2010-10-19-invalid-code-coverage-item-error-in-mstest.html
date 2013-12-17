@@ -1,0 +1,6 @@
+---
+layout: post
+title: Invalid code coverage item error in MSTest
+---
+
+I ran into the following running unit tests after a build under TFS 2010:<br /><br /><blockquote>Invalid code coverage item: The pdb file name must contain at least one character.</blockquote><br />I had modified the .testsettings file <a href="/2010/07/relative-paths-in-testrunconfig-file.html">to use relative paths instead of absolute paths</a>, but the build was failing with the above error. <br /><br />The solution was to edit the .testsettings file to add a <i>pdbFile</i> attribute:<br /><br /><pre>&lt;CodeCoverageItem binaryFile="..\Utilities\%outdir%\Utilities.dll" pdbFile="..\Utilities\%outdir%\Utilities.pdb" instrumentInPlace="true" /&gt;</pre>

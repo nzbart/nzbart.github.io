@@ -1,0 +1,6 @@
+---
+layout: post
+title: Setting up a Google App Engine development environment on Ubuntu 11.04
+---
+
+<ol><li>Install Ubuntu 11.04.</li><li>sudo add-apt-repository ppa:fkrull/deadsnakes</li><li>sudo apt-get update</li><li>sudo apt-get dist-upgrade</li><li>sudo apt-get install eclipse python2.5</li><li>Launch Eclipse and install PyDev from http://pydev.org/updates</li><li>Download Google App Engine from <a href="http://code.google.com/appengine/downloads.html">http://code.google.com/appengine/downloads.html</a></li><li>Expand app engine code into source code folder</li><li>Create a new <em>PyDev Google App Engine Project</em> (Ctrl+N)</li><li>Set up run configuration<br /><ol><li>Name your run configuration.</li><li>Under "Project", add your Google App Engine Python project.</li><li>Under "Main Module", enter the location of the "dev_appserver.py" script.</li><li>Change to the "Arguments" tab and enter "${project_loc}/src" as first argument. After this argument, you may add all available additional arguments listed on the Dev Webserver documentation page. (Here, for example we changed the port where GAE is listening to 9999.)</li></ol></li><li>Run the project.</li><li>Optionally use lib/django_1_2/django/bin/django-admin.py to create a new Django project. You will need to install Django first by running <code>sudo python2.5 setup.py install</code></li></ol>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: PowerShell script to get the IPv4 address of a server
+---
+
+Possible usage:<br /><pre>Get-HostIp servername | clip<br /></pre><br /><pre class="brush:ps">function Get-HostIp([string][parameter(mandatory=$true)]$HostName)<br />{<br /> resolve-host $HostName | select -expandproperty addresslist -First 1 | select -ExpandProperty ipaddresstostring<br />}</pre>

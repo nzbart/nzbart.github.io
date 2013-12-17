@@ -1,0 +1,6 @@
+---
+layout: post
+title: Preserving the complete stack trace when rethrowing an exception
+---
+
+Even <i>throw;</i> loses the top level of the stack trace. Use this 'hack' to work around the problem:<br /><br /><pre class="brush: csharp">static void PreserveStackTrace(Exception exception)<br />{<br />    MethodInfo preserveStackTrace = typeof(Exception).GetMethod("InternalPreserveStackTrace",<br />        BindingFlags.Instance | BindingFlags.NonPublic);<br />    preserveStackTrace.Invoke(exception, null);<br />}</pre><br />(from <a href="http://weblogs.asp.net/fmarguerie/archive/2008/01/02/rethrowing-exceptions-and-preserving-the-full-call-stack-trace.aspx">here</a>)

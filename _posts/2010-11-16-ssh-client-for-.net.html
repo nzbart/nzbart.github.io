@@ -1,0 +1,6 @@
+---
+layout: post
+title: SSH client for .NET
+---
+
+I have been looking for a good, free, .NET SSH client. <a href="http://sshnet.codeplex.com/">This SSH client seems to fit the bill</a>.<br /><br />I did, however, run into a problem where it appears that the state of the session is not preserved between calls. I will follow this up on the Codeplex page.<br /><br />The following test fails:<br /><br /><pre class="brush: csharp">[TestMethod]<br />public void ShouldMaintainSessionStateAcrossCommands()<br />{<br />    using (SshClient client = new SshClient("sssssss", "uuuuuuu", "ppppppp"))<br />    {<br />        client.Connect();<br /><br />        client.RunCommand("cd /tmp");<br />        string result = client.RunCommand("pwd").Result;<br /><br />        Assert.AreEqual("/tmp", result);<br />    }<br />}<br /></pre><br /><b>EDIT</b>: This is <a href="http://sshnet.codeplex.com/workitem/437">the issue I logged and the developer's response</a>. It seems that this behaviour is "by design", which unfortunately means that there will not be a 'fix'.<br /><br />The workaround would be to run all dependent commands separated by semicolons, although this is quite limiting in some situations.

@@ -1,0 +1,6 @@
+---
+layout: post
+title: Generating random date data in SQL Server 2005
+---
+
+The statement below will generate random dates between 1 January 2010 and 27 Apr 2011. <br /><br /><pre class="brush:sql">select cast(cast('1 Jan 2010' as datetime) as int); --returns 40177<br />select cast(cast('27 Apr 2011' as datetime) as int) - cast(cast('1 Jan 2010' as datetime) as int); --returns 481<br /><br />update transactions<br />set requesteddatetimeutc = cast((RAND(convert(varbinary,newid()))*481 + 40177) as datetime);<br /></pre>

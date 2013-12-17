@@ -1,0 +1,6 @@
+---
+layout: post
+title: Broken Silverlight breakpoints
+---
+
+When debugging a Silverlight application in Visual Studio, sometimes breakpoints will not be set due to a symbol load error. This appears to be caused by the xap file being cached. In my case, the following PowerShell command fixed the problem:<br /><br /><i>dir -fo -r "~\AppData\Local\Microsoft\Windows\Temporary Internet Files" -inc *.xap | % {del $_}</i>

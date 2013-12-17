@@ -1,0 +1,6 @@
+---
+layout: post
+title: Multiple recipients with SmtpClient in .NET
+---
+
+When sending a quick email, for example to notify of a PowerShell task failure, the simplest <I>System.Net.Mail.SmtpClient</I> method to use is usually this one: <br /> <pre class="brush:csharp"><br /><span style="color: blue;">public</span>&nbsp;void&nbsp;Send(<br /> <span style="color: blue;">string</span>&nbsp;<span style="color: blue;">from</span>,<br /> <span style="color: blue;">string</span>&nbsp;recipients,<br /> <span style="color: blue;">string</span>&nbsp;subject,<br /> <span style="color: blue;">string</span>&nbsp;body<br />)</pre><br/> The parameter name <I>recipients</I> implies that it is possible to send the email to more than one recipient - but the <a href="http://msdn.microsoft.com/en-us/library/h1s04he7.aspx">documentation</a> does not say how. I tried separating the addresses with a semicolon, but that failed with the following error:  <br/><pre><br />"Send" with "4" argument(s): "An invalid character was found in the mail header: ';'."<br /></pre> The correct separator to use, which I only found out by trawling through the .NET source with ILSpy, is a comma (,).

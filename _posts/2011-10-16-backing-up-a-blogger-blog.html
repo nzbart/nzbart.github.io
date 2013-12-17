@@ -1,0 +1,6 @@
+---
+layout: post
+title: Backing up a Blogger blog
+---
+
+There seems to have been a flurry of activity around 2008 with a lot of tools being written to back up Blogger blogs, but not much since then. After a bit of searching, I found <a href="http://code.google.com/p/jblogbackup/">jblogbackup</a>, which seems to be a reliable, command-line based solution. To get this to work, I needed to do the following:<br /><br /><ol><li>Download the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">Java RTE</a> and add the <i>bin</i>&nbsp;folder to my path environment variable.</li><li>Download&nbsp;<a href="http://code.google.com/p/jblogbackup/">jblogbackup</a>.</li><li>Set the Feedburner feed for my blog to download more than 25 entries by clicking on "Edit Feed Details…" and setting <i>Original Feed</i> to http://<strong>nzbart</strong>.blogspot.com/feeds/posts/default?<strong>max-results=999</strong>. Hopefully 999 entries will last a while.</li><li>Run the tool: <pre class="brush:ps">java -jar jblogbackup-onejar-1.1.jar -b BloggerBackup -c -imgthreads 4 -n nzbart</pre></ol>

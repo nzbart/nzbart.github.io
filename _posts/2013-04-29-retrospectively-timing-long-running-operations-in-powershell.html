@@ -1,0 +1,6 @@
+---
+layout: post
+title: Retrospectively timing long-running operations in PowerShell
+---
+
+Sometimes I run an operation that takes longer than I expect to execute, but once it is finished, the only way to see how long it did take is to run it again in Measure-Command or use some other timing mechanism. This PowerShell prompt preserves your existing prompt (for example PoshGit) and tacks on an execution time for each and every command you run.  <pre><br />C:\Demo [master]> Start-Sleep 3<br />00:00:03.0048920<br />C:\Demo [master]> Start-Sleep 5<br />00:00:04.9974939<br />C:\Demo [master]><br />00:00:00.0004274<br />C:\Demo [master]><br /></pre> <script src="https://gist.github.com/nzbart/5481021.js"></script>
